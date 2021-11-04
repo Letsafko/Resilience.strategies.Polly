@@ -1,10 +1,11 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Resilience.strategies.Polly.Abstracts;
 using Resilience.strategies.Polly.Extensions;
-using System;
+using Resilience.strategies.Polly.Test.MessageHandler;
 
 namespace Resilience.strategies.Polly.Test.Builder
 {
@@ -23,7 +24,7 @@ namespace Resilience.strategies.Polly.Test.Builder
             Configuration =
                 ConfigurationBuilder
                     .Instance
-                    .WithJsonFile("Files/appSettings")
+                    .WithJsonFile("Files/appSettings.json")
                     .Build();
         }
 
@@ -50,13 +51,14 @@ namespace Resilience.strategies.Polly.Test.Builder
             return services
                 .AddHttpClient<IDummyApiClient, DummyApiClient>(nameof(DummyApiClient),
                     client => { client.BaseAddress = new Uri(ApiUrl); })
-                .AddResilienceStrategy(Configuration, _serviceToTest)
+                .AddResilienceStrategy(Configuration, ServiceToTest)
+                .AddHttpMessageHandler(() => new DummyMessageHandler())
                 .Services;
         }
 
         #region ctor & fields
 
-        private readonly string _serviceToTest = $"Polly:{nameof(_serviceToTest)}";
+        private const string ServiceToTest = "Polly:ServiceClient";
         private const string ApiUrl = "http://localhost:2829";
 
         #endregion

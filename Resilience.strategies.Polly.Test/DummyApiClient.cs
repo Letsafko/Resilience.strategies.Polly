@@ -1,6 +1,7 @@
-﻿using System.Net;
-using System.Net.Http;
+﻿using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
+using Polly;
 
 namespace Resilience.strategies.Polly.Test
 {
@@ -13,8 +14,6 @@ namespace Resilience.strategies.Polly.Test
     {
         private readonly HttpClient _client;
 
-        private int _counter;
-
         public DummyApiClient(HttpClient client)
         {
             _client = client;
@@ -22,11 +21,17 @@ namespace Resilience.strategies.Polly.Test
 
         public async Task<HttpResponseMessage> SendAsync()
         {
-            if (_counter == 3)
-                return await Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK));
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Post,
+                Content = new StringContent("{}", Encoding.UTF8, "application/json")
+            };
 
-            _counter++;
-            return await Task.FromResult(new HttpResponseMessage(HttpStatusCode.BadRequest));
+            request.SetPolicyExecutionContext(new Context());
+            var response = await _client.SendAsync(request);
+
+            response.RequestMessage = request;
+            return response;
         }
     }
 }

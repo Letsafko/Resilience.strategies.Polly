@@ -1,11 +1,11 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System;
+using System.Net.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Http;
 using Polly;
 using Resilience.strategies.Polly.Abstracts;
 using Resilience.strategies.Polly.Configuration;
-using System;
-using System.Net.Http;
 
 namespace Resilience.strategies.Polly.Extensions
 {

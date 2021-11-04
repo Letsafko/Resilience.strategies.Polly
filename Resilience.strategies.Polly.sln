@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.31727.386
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resilience.strategies.Polly", "Resilience.strategies.Polly\Resilience.strategies.Polly.csproj", "{26FEE38F-7310-43E7-A123-1B7607830749}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resilience.strategies.Polly.Startup", "Resilience.strategies.Polly.Console\Resilience.strategies.Polly.Startup.csproj", "{865DD3A2-04C7-4F97-9905-3CF8FE1219E0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resilience.strategies.Polly.Test", "Resilience.strategies.Polly.Test\Resilience.strategies.Polly.Test.csproj", "{A87EB60A-4F5F-4DD8-89E8-B67AEA889576}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{26FEE38F-7310-43E7-A123-1B7607830749}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26FEE38F-7310-43E7-A123-1B7607830749}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26FEE38F-7310-43E7-A123-1B7607830749}.Release|Any CPU.Build.0 = Release|Any CPU
-		{865DD3A2-04C7-4F97-9905-3CF8FE1219E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{865DD3A2-04C7-4F97-9905-3CF8FE1219E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{865DD3A2-04C7-4F97-9905-3CF8FE1219E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{865DD3A2-04C7-4F97-9905-3CF8FE1219E0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A87EB60A-4F5F-4DD8-89E8-B67AEA889576}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A87EB60A-4F5F-4DD8-89E8-B67AEA889576}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A87EB60A-4F5F-4DD8-89E8-B67AEA889576}.Release|Any CPU.ActiveCfg = Release|Any CPU
